@@ -11,4 +11,9 @@ const connectDB = async () => {
     }
 }
 
+/*
+1. use async await => because it will take time to connect
+2. use trycatch => to handle errors
+*/
+
 export default connectDB;
