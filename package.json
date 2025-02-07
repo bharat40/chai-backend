@@ -1,7 +1,7 @@
 {
   "name": "chaibackend",
   "version": "1.0.0",
-  "description": "a backend at chia aur code channel - youtube",
+  "description": "a backend at chai aur code channel - youtube",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -15,5 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0"
   }
 }
