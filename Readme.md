@@ -14,3 +14,5 @@ This is a video series on chai aur backend with javascript
 - dotenv -> for environment variables
 - express -> for server
 - mongoose -> for mongodb
+- cookie-parser -> for parsing cookies
+- cors -> for cross origin requests
