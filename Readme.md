@@ -8,7 +8,6 @@ This is a video series on chai aur backend with javascript
 
 - nodemon -> for auto restarting the server
 
-
 # Dependecies used
 
 - dotenv -> for environment variables
@@ -16,3 +15,6 @@ This is a video series on chai aur backend with javascript
 - mongoose -> for mongodb
 - cookie-parser -> for parsing cookies
 - cors -> for cross origin requests
+- bcrypt -> for hashing passwords
+- jsonwebtoken -> for creating jwt tokens
+- mongoose-aggreate-paginate-v2 -> for pagination
