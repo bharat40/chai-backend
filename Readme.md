@@ -18,3 +18,5 @@ This is a video series on chai aur backend with javascript
 - bcrypt -> for hashing passwords
 - jsonwebtoken -> for creating jwt tokens
 - mongoose-aggreate-paginate-v2 -> for pagination
+- cloudinary -> for image upload
+- multer -> for parsing form data
