@@ -4,7 +4,7 @@ const asyncHandler = (requestHandler) => {
     }
 }
 
-export default asyncHandler;
+export { asyncHandler };
 
 /**
  * Express does not automatically catch errors in async functions. If an async route throws an error, you must handle it manually or use a middleware.
