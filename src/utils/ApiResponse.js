@@ -7,6 +7,7 @@ class ApiResponse {
     }
 }
 
+export { ApiResponse }
 
 
 // This class is a structured response wrapper for API responses. It ensures that every response follows a consistent format.
