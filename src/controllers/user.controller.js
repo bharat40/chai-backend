@@ -16,27 +16,34 @@ const registerUser = asyncHandler(async (req, res) => {
     // return res
 
 
-    const { username, email, fullname, avatar, password } = req.body;
-    if (!username || !email || !fullname || !avatar || !password) {
+    const { username, email, fullname, password } = req.body;
+
+    if (!username || !email || !password || !fullname) {
         throw new ApiError(400, "All fields are required");
     }
-    const userExists = User.findOne({
+    const userExists = await User.findOne({
         $or: [{ username }, { email }]
     })
     if (userExists) {
-        throw new ApiError("409", "User already exists with this email or username")
+        throw new ApiError(409, "User already exists with this email or username")
     }
-    const avatarLocalPath = req.files?.avatar[0]?.path
-    const coverImageLocalPath = req.files?.coverImage[0]?.path
+    const avatarLocalPath = req.files?.avatar[0]?.path;
+
+    let coverImageLocalPath;
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
 
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required")
     }
 
-    const avatarCloud = await uploadOnCloudinary(avatarLocalPath);
-    const coverImageCloud = await uploadOnCloudinary(coverImageLocalPath);
 
-    if (!avatarCloud) {
+
+    const avatar = await uploadOnCloudinary(avatarLocalPath);
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+
+    if (!avatar) {
         throw new ApiError(400, "Avatar file is required")
     }
 
@@ -45,11 +52,11 @@ const registerUser = asyncHandler(async (req, res) => {
         fullname,
         password,
         email,
-        avatar: avatarCloud.url,
-        coverImage: coverImageCloud?.url || ""
+        avatar: avatar.url,
+        coverImage: coverImage?.url || "",
     })
 
-    const createdUser = await newUser.findById(newUser._id).select(
+    const createdUser = await User.findById(newUser._id).select(
         "-password -refreshToken"
     )
 
