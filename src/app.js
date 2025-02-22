@@ -2,6 +2,7 @@ import e from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.routes.js";
+import tweetRoutes from "./routes/tweet.routes.js"
 const app = e();
 
 app.use(cors({
@@ -14,5 +15,6 @@ app.use(e.static("public")); // to server static files from the "public" directo
 app.use(cookieParser()); // to parse cookies in incoming requests
 
 app.use("/api/v1/users", userRoutes);
+app.use('/api/v1/tweets', tweetRoutes)
 
 export default app;

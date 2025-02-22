@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const tweetSchema = new Schema({
+const tweetSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
